@@ -1,6 +1,6 @@
 <?php
 
-namespace Smile\FileManage\Controllers;
+namespace Smbear\FileManage\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -8,7 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Smile\FileManage\Traits\ApiResponse;
+use Smbear\FileManage\Traits\ApiResponse;
 use FileManage;
 
 class FileManageController extends BaseController

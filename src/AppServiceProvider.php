@@ -1,6 +1,6 @@
 <?php
 
-namespace Smile\FileManage;
+namespace Smbear\FileManage;
 
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;

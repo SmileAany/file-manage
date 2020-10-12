@@ -1,5 +1,5 @@
 # 1、发布配置文件
-    php artisan vendor:publish --provider="Smile\FileManage\AppServiceProvider"
+    php artisan vendor:publish --provider="Smbear\FileManage\AppServiceProvider"
 # 2、迁移数据库文件
     php artisan migrate
 # 3、使用方法

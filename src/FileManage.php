@@ -1,11 +1,11 @@
 <?php
 
-namespace Smile\FileManage;
+namespace Smbear\FileManage;
 
-use Smile\FileManage\Exceptions\FileManageException;
+use Smbear\FileManage\Exceptions\FileManageException;
 use Illuminate\Support\Facades\Storage;
-use Smile\FileManage\Models\Files;
-use Smile\FileManage\Traits\ApiResponse;
+use Smbear\FileManage\Models\Files;
+use Smbear\FileManage\Traits\ApiResponse;
 
 class FileManage
 {
