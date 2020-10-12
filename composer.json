@@ -1,0 +1,33 @@
+{
+    "name": "smile/file-manage",
+    "minimum-stability": "dev",
+    "description": "File manager",
+    "keywords": ["laravel", "file"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "smile",
+            "email": "ywjmylove@163.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Smile\\FileManage\\":"src/"
+        },
+        "files":[
+            "helpers/helper.php"
+        ]
+    },
+    "extra":{
+        "laravel":{
+            "providers":[
+                "Smile\\FileManage\\AppServiceProvider"
+            ],
+            "aliases":{
+                "FileManage":"Smile\\FileManage\\Facades\\FileManage"
+            }
+        }
+    }
+}
