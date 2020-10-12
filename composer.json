@@ -1,5 +1,5 @@
 {
-    "name": "smile/file-manage",
+    "name": "smbear/file-manage",
     "minimum-stability": "dev",
     "description": "File manager",
     "keywords": ["laravel", "file"],
@@ -7,14 +7,14 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "smile",
+            "name": "smbear",
             "email": "ywjmylove@163.com"
         }
     ],
     "require": {},
     "autoload": {
         "psr-4": {
-            "Smile\\FileManage\\":"src/"
+            "Smbear\\FileManage\\":"src/"
         },
         "files":[
             "helpers/helper.php"
@@ -23,10 +23,10 @@
     "extra":{
         "laravel":{
             "providers":[
-                "Smile\\FileManage\\AppServiceProvider"
+                "Smbear\\FileManage\\AppServiceProvider"
             ],
             "aliases":{
-                "FileManage":"Smile\\FileManage\\Facades\\FileManage"
+                "FileManage":"Smbear\\FileManage\\Facades\\FileManage"
             }
         }
     }

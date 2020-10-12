@@ -1,6 +1,6 @@
 <?php
 
-namespace Smile\FileManage\Facades;
+namespace Smbear\FileManage\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

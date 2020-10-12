@@ -6,7 +6,7 @@ if(!function_exists('custom_file_size_trans')){
      * 转换文件大小
      * @param int $size
      * @return string
-     * @auth smile
+     * @auth Smbear
      * @email ywjmylove@163.com
      * @date 2020-10-12 11:19
      */

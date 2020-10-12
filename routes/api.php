@@ -1,9 +1,9 @@
 <?php
 
-namespace Smile\FileManage;
+namespace Smbear\FileManage;
 
 use Illuminate\Support\Facades\Route;
-use Smile\FileManage\Controllers\FileManageController;
+use Smbear\FileManage\Controllers\FileManageController;
 
 //附件上传
 Route::post('upload',[FileManageController::class,'upload']);

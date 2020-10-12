@@ -1,6 +1,6 @@
 <?php
 
-namespace Smile\FileManage\Traits;
+namespace Smbear\FileManage\Traits;
 
 use Symfony\Component\HttpFoundation\Response as FoundationResponse;
 use Response;
@@ -134,7 +134,7 @@ trait ApiResponse
      * @param $message
      * @param string $status
      * @return mixed
-     * @auth smile
+     * @auth Smbear
      * @email ywjmylove@163.com
      * @date 2020-7-30 17:08
      */

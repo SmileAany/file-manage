@@ -1,6 +1,6 @@
 <?php
 
-namespace Smile\FileManage\Exceptions;
+namespace Smbear\FileManage\Exceptions;
 
 use Exception;
 use Throwable;

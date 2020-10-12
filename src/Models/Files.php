@@ -1,6 +1,6 @@
 <?php
 
-namespace Smile\FileManage\Models;
+namespace Smbear\FileManage\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
