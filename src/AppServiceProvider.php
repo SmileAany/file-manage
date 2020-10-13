@@ -6,7 +6,7 @@ use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
-class AppServiceProvider extends ServiceProvider implements DeferrableProvider
+class AppServiceProvider extends ServiceProvider
 {
     public function register()
     {
@@ -39,6 +39,7 @@ class AppServiceProvider extends ServiceProvider implements DeferrableProvider
         $this->registerRoutes();
     }
 
+    //绑定域名的前缀和中间件
     protected function registerRoutes()
     {
         Route::group($this->routeConfiguration(), function () {

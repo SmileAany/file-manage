@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'prefix'    =>'api',
+    'prefix'    =>'',
     'middleware'=>[],
     'ext' => [
         'jpg', 'jpeg', 'png', 'xlsx', 'doc'
