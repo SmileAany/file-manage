@@ -68,4 +68,27 @@ class FileManage
             throw new FileManageException($exception->getMessage());
         }
     }
+
+    public function destroy(int $id)
+    {
+        try{
+            $path = Files::where($id,$id)
+                ->value('path');
+
+            if($path){
+                if(!Storage::disk('public')->exists($path)){
+                    throw new FileManageException('资源不存在');
+                }
+
+                Files::destroy($id);
+                Storage::disk('public')->delete($path);
+
+                return $this->success('删除成功');
+            }
+
+            return $this->failed('附件id 不存在');
+        }catch (\Exception $exception){
+            throw new FileManageException('资源删除失败 '.$exception->getMessage());
+        }
+    }
 }
