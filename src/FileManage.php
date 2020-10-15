@@ -6,11 +6,22 @@ use Smbear\FileManage\Exceptions\FileManageException;
 use Illuminate\Support\Facades\Storage;
 use Smbear\FileManage\Models\Files;
 use Smbear\FileManage\Traits\ApiResponse;
+use Illuminate\Support\Facades\DB;
 
 class FileManage
 {
     use ApiResponse;
 
+    /**
+     * @describe
+     * 附件上传
+     * @param object $request
+     * @return mixed
+     * @throws FileManageException
+     * @auth smile
+     * @email ywjmylove@163.com
+     * @date 2020-10-14 17:35
+     */
     public function upload(object $request)
     {
         if(!$request->file('file')->isValid()){
@@ -41,7 +52,7 @@ class FileManage
             throw new FileManageException('目录没有写权限');
         }
 
-        $path     = Storage::disk('public')->putFile(date('Ym'),$request->file('file'));
+        $path     = Storage::disk(config('file.disk'))->putFile(date('Ym'),$request->file('file'));
         $filename = $request->file->getClientOriginalName();
 
         $params = [
@@ -54,21 +65,19 @@ class FileManage
             'created_at' => date('Y-m-d H:i:s')
         ];
 
-        try{
-            $id = Files::insertGetId($params);
-
-            $data = [
-                'id'      =>$id,
-                'filename'=>$filename,
-                'url'     =>Storage::url($path)
-            ];
-
-            return $this->success(compact('data'));
-        }catch (\Exception $exception){
-            throw new FileManageException($exception->getMessage());
-        }
+        return $params;
     }
 
+    /**
+     * @describe
+     * 附件删除
+     * @param int $id
+     * @return mixed
+     * @throws FileManageException
+     * @auth smile
+     * @email ywjmylove@163.com
+     * @date 2020-10-14 17:36
+     */
     public function destroy(int $id)
     {
         try{
@@ -76,19 +85,87 @@ class FileManage
                 ->value('path');
 
             if($path){
-                if(!Storage::disk('public')->exists($path)){
+                if(!Storage::disk(config('file.disk'))->exists($path)){
                     throw new FileManageException('资源不存在');
                 }
 
                 Files::destroy($id);
-                Storage::disk('public')->delete($path);
+                Storage::disk(config('file.disk'))->delete($path);
 
-                return $this->success('删除成功');
+                return $this->message('删除成功');
             }
 
             return $this->failed('附件id 不存在');
         }catch (\Exception $exception){
             throw new FileManageException('资源删除失败 '.$exception->getMessage());
         }
+    }
+
+    /**
+     * @describe
+     * 附件重命名
+     * @param int $id
+     * @param string $file_name
+     * @return mixed
+     * @throws FileManageException
+     * @auth smile
+     * @email ywjmylove@163.com
+     * @date 2020-10-15 10:38
+     */
+    public function rename(int $id,string $file_name)
+    {
+        $file = Files::find($id);
+
+        if($file){
+            try{
+                $file->filename = $file_name;
+                $file->save();
+
+                return $this->message('编辑成功');
+            }catch (\Exception $exception){
+                throw new FileManageException('资源编辑失败 '.$exception->getMessage());
+            }
+        }
+
+        return $this->failed('附件id 不存在');
+    }
+
+    /**
+     * @describe
+     * 附件覆盖
+     * @param int $id
+     * @param object $request
+     * @return mixed
+     * @throws FileManageException
+     * @auth smile
+     * @email ywjmylove@163.com
+     * @date 2020-10-15 10:48
+     */
+    public function cover(int $id,object $request)
+    {
+        $file = Files::find($id);
+
+        if($file){
+
+            try{
+                Storage::disk(config('file.disk'))->delete($file->path);
+
+                $data = $this->upload($request);
+
+                $file->filename = $data['filename'];
+                $file->original = $data['original'];
+                $file->ext      = $data['ext'];
+                $file->path     = $data['path'];
+                $file->size     = $data['size'];
+
+                $file->save();
+
+                return $this->message('编辑成功');
+            }catch (\Exception $exception){
+                throw new FileManageException('资源编辑失败 '.$exception->getMessage());
+            }
+        }
+
+        return $this->failed('附件id 不存在');
     }
 }

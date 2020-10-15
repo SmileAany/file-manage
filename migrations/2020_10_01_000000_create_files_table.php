@@ -15,6 +15,7 @@ class CreateFilesTable extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('user_id')->nullable()->comment('用户id');
             $table->bigInteger('model_id')->nullable()->comment('模型id');
             $table->string('model_type',50)->nullable()->comment("模型名称");
             $table->string('filename',100)->nullable(false)->comment('上传文件名称');
@@ -25,7 +26,6 @@ class CreateFilesTable extends Migration
             $table->tinyInteger('type')->nullable(false)->default(0)->comment('类型 附件的作用区间');
             $table->timestamp('created_at')->nullable(true)->comment('上传时间');
             $table->timestamp('updated_at')->nullable(true)->comment('更改时间');
-            $table->timestamp('deleted_at')->nullable(true)->comment('删除时间');
         });
     }
 
@@ -36,6 +36,6 @@ class CreateFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('files');
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'disk'      =>'public',
     'prefix'    =>'',
     'middleware'=>[],
     'ext' => [

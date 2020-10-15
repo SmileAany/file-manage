@@ -11,7 +11,12 @@
             "email": "ywjmylove@163.com"
         }
     ],
-    "require": {},
+    "require": {
+        "php": "^7.2.5",
+        "illuminate/filesystem": "^8.0",
+        "tucker-eric/eloquentfilter": "^2.4",
+        "tymon/jwt-auth": "^1.0"
+    },
     "autoload": {
         "psr-4": {
             "Smbear\\FileManage\\":"src/"

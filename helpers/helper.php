@@ -10,7 +10,7 @@ if(!function_exists('custom_file_size_trans')){
      * @email ywjmylove@163.com
      * @date 2020-10-12 11:19
      */
-    function custom_file_size_trans(int $size){
+    function custom_file_size_trans($size){
 
         if(!empty($size)){
 
