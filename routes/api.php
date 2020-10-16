@@ -15,4 +15,4 @@ Route::delete('destroy',[FileManageController::class,'destroy']);
 Route::put('rename',[FileManageController::class,'rename']);
 
 //附件覆盖
-Route::post('cover',[FileManageController::class,'cover']);
+Route::put('cover',[FileManageController::class,'cover']);
