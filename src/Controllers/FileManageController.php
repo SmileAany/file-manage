@@ -8,9 +8,11 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Smbear\FileManage\Exceptions\FileManageException;
 use Smbear\FileManage\Traits\ApiResponse;
-use FileManage;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Files;
+use FileManage;
 
 class FileManageController extends BaseController
 {

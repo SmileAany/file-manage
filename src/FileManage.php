@@ -81,7 +81,7 @@ class FileManage
     public function destroy(int $id)
     {
         try{
-            $path = Files::where($id,$id)
+            $path = Files::where('id',$id)
                 ->value('path');
 
             if($path){
@@ -160,7 +160,7 @@ class FileManage
 
                 $file->save();
 
-                return $this->message('编辑成功');
+                return $this->message('覆盖成功');
             }catch (\Exception $exception){
                 throw new FileManageException('资源编辑失败 '.$exception->getMessage());
             }

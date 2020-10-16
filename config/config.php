@@ -2,7 +2,7 @@
 
 return [
     'disk'      =>'public',
-    'prefix'    =>'',
+    'prefix'    =>'api/file',
     'middleware'=>[],
     'ext' => [
         'jpg', 'jpeg', 'png', 'xlsx', 'doc'
