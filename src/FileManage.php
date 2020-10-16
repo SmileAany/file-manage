@@ -81,7 +81,7 @@ class FileManage
     public function destroy(int $id)
     {
         try{
-            $path = Files::where($id,$id)
+            $path = Files::where('id',$id)
                 ->value('path');
 
             if($path){
@@ -160,7 +160,7 @@ class FileManage
 
                 $file->save();
 
-                return $this->message('编辑成功');
+                return $this->message('覆盖成功');
             }catch (\Exception $exception){
                 throw new FileManageException('资源编辑失败 '.$exception->getMessage());
             }
@@ -168,4 +168,19 @@ class FileManage
 
         return $this->failed('附件id 不存在');
     }
+
+    /**
+     * @describe
+     * 附件列表
+     * @param object $request
+     * @return mixed
+     * @auth smile
+     * @email ywjmylove@163.com
+     * @date 2020-10-16 15:26
+     */
+    public function index(object $request)
+    {
+        return Files::filter($request->all())->with('user')->paginate();
+    }
+
 }

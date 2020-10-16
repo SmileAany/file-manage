@@ -8,9 +8,11 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Smbear\FileManage\Exceptions\FileManageException;
 use Smbear\FileManage\Traits\ApiResponse;
-use FileManage;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Files;
+use FileManage;
 
 class FileManageController extends BaseController
 {
@@ -19,12 +21,12 @@ class FileManageController extends BaseController
     /**
      * @describe
      * 附件上传
-     * 将上传的的附件保存到
      * @param Request $request
      * @return mixed
+     * @throws FileManageException
      * @auth smile
      * @email ywjmylove@163.com
-     * @date 2020-10-15 11:12
+     * @date 2020-10-16 15:27
      */
     public function upload(Request $request)
     {
@@ -162,12 +164,5 @@ class FileManageController extends BaseController
         }
 
         return FileManage::cover($request->input('id'),$request);
-    }
-
-    public function index(Request $request)
-    {
-        $res = Files::filter($request->all())->with('user')->paginate();
-
-        return $this->success($res);
     }
 }
