@@ -6,7 +6,6 @@ use Smbear\FileManage\Exceptions\FileManageException;
 use Illuminate\Support\Facades\Storage;
 use Smbear\FileManage\Models\Files;
 use Smbear\FileManage\Traits\ApiResponse;
-use Illuminate\Support\Facades\DB;
 
 class FileManage
 {
